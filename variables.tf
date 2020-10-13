@@ -19,8 +19,9 @@ variable "vpc_name" {
 }
 
 variable "region" {
-  description = "VPC Conector Region"
+  description = "Region where the Serverless VPC Access connector resides. Defaults to the Google provider's region if nothing is specified here. See https://cloud.google.com/compute/docs/regions-zones"
   type        = string
+  default     = ""
 }
 
 variable "ip_cidr_range" {

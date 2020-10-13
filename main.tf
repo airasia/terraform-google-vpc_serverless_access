@@ -4,6 +4,7 @@ terraform {
 
 locals {
   connector_name = format("%s-%s", var.connector_name, var.name_suffix)
+  connector_region = var.region != "" ? var.region : data.google_client_config.google_client.region
 }
 
 resource "google_project_service" "serverless_vpc_api" {
@@ -13,7 +14,7 @@ resource "google_project_service" "serverless_vpc_api" {
 
 resource "google_vpc_access_connector" "vpc_connector" {
   name          = local.connector_name
-  region        = var.region
+  region        = local.connector_region
   ip_cidr_range = var.ip_cidr_range
   network       = var.vpc_name
   depends_on    = [google_project_service.serverless_vpc_api]
