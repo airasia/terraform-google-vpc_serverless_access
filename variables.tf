@@ -7,7 +7,7 @@ variable "name_suffix" {
   }
 }
 
-variable "vpc_network_name" {
+variable "vpc_name" {
   description = "VPC Network Name"
   type        = string
 }
