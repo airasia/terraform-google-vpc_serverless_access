@@ -1,3 +1,7 @@
+# ----------------------------------------------------------------------------------------------------------------------
+# REQUIRED PARAMETERS
+# ----------------------------------------------------------------------------------------------------------------------
+
 variable "name_suffix" {
   description = "An arbitrary suffix that will be added to the end of the resource name(s). For example: an environment name, a business-case name, a numeric id, etc."
   type        = string
@@ -16,6 +20,10 @@ variable "ip_cidr_range" {
   description = "A non-overlapping /28 IP CIDR range that is unused by the VPC Netowrk elsewhere. The VPC Connector will create connector instances on IP addresses in this range."
   type        = string
 }
+
+# ----------------------------------------------------------------------------------------------------------------------
+# OPTIONAL PARAMETERS
+# ----------------------------------------------------------------------------------------------------------------------
 
 variable "connector_name" {
   description = "An arbitrary name for the Serverless VPC Access connector."
