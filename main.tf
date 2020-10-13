@@ -3,7 +3,7 @@ terraform {
 }
 
 locals {
-  connector_name = format("%s-%s", var.connector_name, var.name_suffix)
+  connector_name   = format("%s-%s", var.connector_name, var.name_suffix)
   connector_region = var.region != "" ? var.region : data.google_client_config.google_client.region
 }
 
