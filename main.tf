@@ -3,7 +3,8 @@ terraform {
 }
 
 locals {
-  vpc_connector_name = format("%s-%s", "vpc-connector", var.name_suffix)
+  connector_name   = format("%s-%s", var.connector_name, var.name_suffix)
+  connector_region = var.region != "" ? var.region : data.google_client_config.google_client.region
 }
 
 resource "google_project_service" "serverless_vpc_api" {
@@ -12,15 +13,14 @@ resource "google_project_service" "serverless_vpc_api" {
 }
 
 resource "google_vpc_access_connector" "vpc_connector" {
-  name          = local.vpc_connector_name
-  region        = var.vpc_connector_region
+  name          = local.connector_name
+  region        = local.connector_region
+  network       = var.vpc_name
   ip_cidr_range = var.ip_cidr_range
-  network       = var.vpc_network_name
   depends_on    = [google_project_service.serverless_vpc_api]
   timeouts {
-    create = var.vpc_connector_timeout
-    update = var.vpc_connector_timeout
-    delete = var.vpc_connector_timeout
+    create = var.connector_timeout
+    delete = var.connector_timeout
   }
 }
 
