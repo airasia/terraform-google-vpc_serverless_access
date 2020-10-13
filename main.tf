@@ -20,7 +20,6 @@ resource "google_vpc_access_connector" "vpc_connector" {
   depends_on    = [google_project_service.serverless_vpc_api]
   timeouts {
     create = var.connector_timeout
-    update = var.connector_timeout
     delete = var.connector_timeout
   }
 }
