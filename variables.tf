@@ -7,6 +7,12 @@ variable "name_suffix" {
   }
 }
 
+variable "connector_name" {
+  description = "An arbitrary name for the Serverless VPC Access connector."
+  type        = string
+  default     = "vpc-connector"
+}
+
 variable "vpc_name" {
   description = "VPC Network Name"
   type        = string

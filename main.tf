@@ -3,7 +3,7 @@ terraform {
 }
 
 locals {
-  connector_name = format("%s-%s", "vpc-connector", var.name_suffix)
+  connector_name = format("%s-%s", var.connector_name, var.name_suffix)
 }
 
 resource "google_project_service" "serverless_vpc_api" {
