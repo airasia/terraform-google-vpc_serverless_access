@@ -14,7 +14,7 @@ variable "connector_name" {
 }
 
 variable "vpc_name" {
-  description = "VPC Network Name"
+  description = "Name of the VPC Network for which this Serverless VPC Access connector will be created."
   type        = string
 }
 
@@ -25,7 +25,7 @@ variable "region" {
 }
 
 variable "ip_cidr_range" {
-  description = "VPC Connector CIDR IP"
+  description = "A non-overlapping /28 IP CIDR range that is unused by the VPC Netowrk elsewhere. The VPC Connector will create connector instances on IP addresses in this range."
   type        = string
 }
 
