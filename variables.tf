@@ -29,7 +29,7 @@ variable "ip_cidr_range" {
   type        = string
 }
 
-variable "vpc_connector_timeout" {
+variable "connector_timeout" {
   description = "How long a VPC Connector operation is allowed to take before being considered a failure."
   type        = string
   default     = "10m"

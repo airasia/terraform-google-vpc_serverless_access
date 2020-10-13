@@ -19,9 +19,9 @@ resource "google_vpc_access_connector" "vpc_connector" {
   network       = var.vpc_name
   depends_on    = [google_project_service.serverless_vpc_api]
   timeouts {
-    create = var.vpc_connector_timeout
-    update = var.vpc_connector_timeout
-    delete = var.vpc_connector_timeout
+    create = var.connector_timeout
+    update = var.connector_timeout
+    delete = var.connector_timeout
   }
 }
 
