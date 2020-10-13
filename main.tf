@@ -15,8 +15,8 @@ resource "google_project_service" "serverless_vpc_api" {
 resource "google_vpc_access_connector" "vpc_connector" {
   name          = local.connector_name
   region        = local.connector_region
-  ip_cidr_range = var.ip_cidr_range
   network       = var.vpc_name
+  ip_cidr_range = var.ip_cidr_range
   depends_on    = [google_project_service.serverless_vpc_api]
   timeouts {
     create = var.connector_timeout
