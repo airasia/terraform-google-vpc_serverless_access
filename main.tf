@@ -3,7 +3,7 @@ terraform {
 }
 
 locals {
-  vpc_connector_name = format("%s-%s", "vpc-connector", var.name_suffix)
+  connector_name = format("%s-%s", "vpc-connector", var.name_suffix)
 }
 
 resource "google_project_service" "serverless_vpc_api" {
@@ -12,7 +12,7 @@ resource "google_project_service" "serverless_vpc_api" {
 }
 
 resource "google_vpc_access_connector" "vpc_connector" {
-  name          = local.vpc_connector_name
+  name          = local.connector_name
   region        = var.vpc_connector_region
   ip_cidr_range = var.ip_cidr_range
   network       = var.vpc_network_name

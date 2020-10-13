@@ -1,4 +1,4 @@
-output "vpc_connector_name" {
-  description = "Serverless VPC Connector Name"
-  value       = local.vpc_connector_name
+output "connector_name" {
+  description = "Serverless VPC Access connector name"
+  value       = local.connector_name
 }
