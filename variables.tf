@@ -42,3 +42,9 @@ variable "connector_timeout" {
   type        = string
   default     = "10m"
 }
+
+variable "max_throughput" {
+  description = "size of network throughput of the VPC Access Connector"
+  type        = number
+  default     = 1000
+}
