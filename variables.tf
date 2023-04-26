@@ -44,7 +44,7 @@ variable "connector_timeout" {
 }
 
 variable "max_throughput" {
-  description = "size of network throughput of the VPC Access Connector"
+  description = "Maximum throughput of the Serverless VPC Access connector in Mbps."
   type        = number
   default     = 1000
 }
