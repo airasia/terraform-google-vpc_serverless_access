@@ -19,6 +19,7 @@ variable "vpc_name" {
 variable "ip_cidr_range" {
   description = "A non-overlapping /28 IP CIDR range that is unused by the VPC Netowrk elsewhere. The VPC Connector will create connector instances on IP addresses in this range."
   type        = string
+  default     = null
 }
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -47,4 +48,10 @@ variable "max_throughput" {
   description = "Maximum throughput of the Serverless VPC Access connector in Mbps."
   type        = number
   default     = 300
+}
+
+variable "subnet" {
+  description = "Subnet to use for serverless coneector. Only way in case of shared vpc connector"
+  type        = string
+  default     = null
 }

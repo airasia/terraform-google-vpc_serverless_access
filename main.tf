@@ -24,6 +24,12 @@ resource "google_vpc_access_connector" "vpc_connector" {
   max_throughput = var.max_throughput
   ip_cidr_range  = var.ip_cidr_range
   depends_on     = [google_project_service.networking_api, google_project_service.serverless_vpc_api]
+  dynamic "subnet" {
+    for_each = var.subnet == null ? [] : [0]
+    content {
+      name = var.subnet
+    }
+  }
   timeouts {
     create = var.connector_timeout
     delete = var.connector_timeout
