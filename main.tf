@@ -27,7 +27,8 @@ resource "google_vpc_access_connector" "vpc_connector" {
   dynamic "subnet" {
     for_each = var.subnet == null ? [] : [0]
     content {
-      name = var.subnet
+      name       = var.subnet
+      project_id = var.project_id
     }
   }
   timeouts {
