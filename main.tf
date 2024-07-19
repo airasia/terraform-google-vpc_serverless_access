@@ -21,6 +21,9 @@ resource "google_vpc_access_connector" "vpc_connector" {
   name           = local.connector_name
   region         = local.connector_region
   network        = var.vpc_name
+  machine_type   = var.machine_type
+  min_instances  = var.min_instances
+  max_instances  = var.max_instances
   max_throughput = var.max_throughput
   ip_cidr_range  = var.ip_cidr_range
   depends_on     = [google_project_service.networking_api, google_project_service.serverless_vpc_api]

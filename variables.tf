@@ -51,13 +51,31 @@ variable "max_throughput" {
 }
 
 variable "subnet" {
-  description = "Subnet to use for serverless coneector. Only way in case of shared vpc connector"
+  description = "Subnet to use for serverless connector. Only way in case of shared vpc connector."
   type        = string
   default     = null
 }
 
 variable "project_id" {
-  description = "project id of the subnet. Only required if subnet is in another shared host project"
+  description = "Project id of the subnet. Only required if subnet is in another shared host project."
   type        = string
   default     = null
+}
+
+variable "machine_type" {
+  description = "(Optional) Machine type of VM Instance underlying connector. Default is e2-micro. Refer to this doc for selecting machine type https://cloud.google.com/vpc/docs/serverless-vpc-access#scaling"
+  type        = string
+  default     = "e2-micro"
+}
+
+variable "min_instances" {
+  description = "(Optional) Minimum value of instances in autoscaling group underlying the connector. Value must be between 2 and 9, inclusive. Must be lower than the value specified by max_instances."
+  type        = number
+  default     = 2
+}
+
+variable "max_instances" {
+  description = "(Optional) Maximum value of instances in autoscaling group underlying the connector. Value must be between 3 and 10, inclusive. Must be higher than the value specified by min_instances. Connectors don't scale in. To prevent connectors from scaling out more than you want, set the maximum number of instances to a low number."
+  type        = number
+  default     = 3
 }
