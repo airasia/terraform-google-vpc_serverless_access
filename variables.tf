@@ -44,12 +44,6 @@ variable "connector_timeout" {
   default     = "10m"
 }
 
-variable "max_throughput" {
-  description = "Maximum throughput of the Serverless VPC Access connector in Mbps."
-  type        = number
-  default     = 300
-}
-
 variable "subnet" {
   description = "Subnet to use for serverless connector. Only way in case of shared vpc connector."
   type        = string
