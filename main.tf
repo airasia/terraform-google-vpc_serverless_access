@@ -31,7 +31,7 @@ resource "google_vpc_access_connector" "vpc_connector" {
     for_each = var.subnet == null ? [] : [0]
     content {
       name       = var.subnet
-      project_id = var.project_id
+      project_id = var.subnet_project_id
     }
   }
   timeouts {

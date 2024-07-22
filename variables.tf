@@ -56,7 +56,7 @@ variable "subnet" {
   default     = null
 }
 
-variable "project_id" {
+variable "subnet_project_id" {
   description = "Project id of the subnet. Only required if subnet is in another shared host project."
   type        = string
   default     = null
