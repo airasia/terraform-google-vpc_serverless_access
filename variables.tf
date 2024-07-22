@@ -19,6 +19,7 @@ variable "vpc_name" {
 variable "ip_cidr_range" {
   description = "A non-overlapping /28 IP CIDR range that is unused by the VPC Netowrk elsewhere. The VPC Connector will create connector instances on IP addresses in this range."
   type        = string
+  default     = null
 }
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -43,8 +44,32 @@ variable "connector_timeout" {
   default     = "10m"
 }
 
-variable "max_throughput" {
-  description = "Maximum throughput of the Serverless VPC Access connector in Mbps."
+variable "subnet" {
+  description = "Subnet to use for serverless connector. Only way in case of shared vpc connector."
+  type        = string
+  default     = null
+}
+
+variable "subnet_project_id" {
+  description = "Project id of the subnet. Only required if subnet is in another shared host project."
+  type        = string
+  default     = null
+}
+
+variable "machine_type" {
+  description = "Machine type of VM Instance underlying connector. Default is e2-micro. Refer to this doc for selecting machine type https://cloud.google.com/vpc/docs/serverless-vpc-access#scaling"
+  type        = string
+  default     = "e2-micro"
+}
+
+variable "min_instances" {
+  description = "Minimum value of instances in autoscaling group underlying the connector. Value must be between 2 and 9, inclusive. Must be lower than the value specified by max_instances. Refer to this doc for setting min_instances https://cloud.google.com/vpc/docs/serverless-vpc-access#scaling."
   type        = number
-  default     = 300
+  default     = 2
+}
+
+variable "max_instances" {
+  description = "Maximum value of instances in autoscaling group underlying the connector. Value must be between 3 and 10, inclusive. Must be higher than the value specified by min_instances. Connectors don't scale in. To prevent connectors from scaling out more than you want, set the maximum number of instances to a low number. Refer to this doc for setting max_instances https://cloud.google.com/vpc/docs/serverless-vpc-access#scaling."
+  type        = number
+  default     = 3
 }
