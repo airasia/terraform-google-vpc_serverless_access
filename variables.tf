@@ -73,3 +73,9 @@ variable "max_instances" {
   type        = number
   default     = 3
 }
+
+variable "max_throughput" {
+  description = "(Optional) Maximum throughput of the connector in Mbps, must be greater than min_throughput. Default is 300. Refers to the expected throughput when using an e2-micro machine type. Value must be a multiple of 100 from 300 through 1000. Must be higher than the value specified by min_throughput. If both max_throughput and max_instances are provided, max_instances takes precedence over max_throughput. The use of max_throughput is discouraged in favor of max_instances."
+  type        = number
+  default     = null
+}
